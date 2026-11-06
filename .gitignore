@@ -20,6 +20,9 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/app/*
+!/storage/app/private/
+!/storage/app/public/
 /vendor
 /coverage-html
 /coverage.txt
