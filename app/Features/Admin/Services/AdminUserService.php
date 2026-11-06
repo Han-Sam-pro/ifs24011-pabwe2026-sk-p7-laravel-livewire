@@ -24,9 +24,9 @@ class AdminUserService
             ])
             ->when($search, function ($query, $search) {
                 $query->where(function ($query) use ($search) {
-                    $query->where('name', 'like', "%{$search}%")
-                        ->orWhere('username', 'like', "%{$search}%")
-                        ->orWhere('email', 'like', "%{$search}%");
+                    $query->whereLike('name', "%{$search}%")
+                        ->orWhereLike('username', "%{$search}%")
+                        ->orWhereLike('email', "%{$search}%");
                 });
             })
             ->latest('id')

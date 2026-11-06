@@ -1,47 +1,33 @@
-FROM dunglas/frankenphp:1-php8.4-bookworm AS base
+FROM php:8.4-apache
 
-RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
-    && install-php-extensions pdo_mysql gd intl zip opcache
+# PHP extensions required by Laravel, PostgreSQL (Aiven), GD (profile crop), Excel (phpspreadsheet)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpq-dev libpng-dev libjpeg62-turbo-dev libfreetype6-dev \
+        libzip-dev libicu-dev libonig-dev unzip git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" pdo_pgsql pgsql gd zip intl bcmath exif mbstring \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-
-FROM base AS dependencies
+RUN a2enmod rewrite headers
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+WORKDIR /var/www/html
+
+# Dependencies first (cached when only app code changes)
 COPY composer.json composer.lock ./
-RUN composer install \
-    --no-dev \
-    --no-interaction \
-    --no-progress \
-    --no-scripts \
-    --optimize-autoloader \
-    --prefer-dist
+RUN composer install --no-dev --no-interaction --no-progress --prefer-dist --no-autoloader --no-scripts
 
 COPY . .
-RUN mkdir -p \
-        storage/framework/cache \
-        storage/framework/sessions \
-        storage/framework/views \
-        storage/logs \
-        bootstrap/cache \
-    && composer dump-autoload --no-dev --classmap-authoritative --no-interaction
 
-FROM base AS runtime
+RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader \
+    && cp docker/apache-vhost.conf /etc/apache2/sites-available/000-default.conf \
+    && cp docker/php.ini /usr/local/etc/php/conf.d/app.ini \
+    && chmod +x docker/entrypoint.sh \
+    && mkdir -p storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs storage/app/public bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
 
-COPY --from=dependencies --chown=www-data:www-data /app /app
-COPY --chown=www-data:www-data Caddyfile /etc/frankenphp/Caddyfile
+EXPOSE 10000
 
-RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
-    && chown -R www-data:www-data /config/caddy /data/caddy
-
-ENV PORT=80 \
-    APP_ENV=production \
-    APP_DEBUG=false \
-    LOG_CHANNEL=stderr \
-    CACHE_STORE=database \
-    SESSION_DRIVER=database \
-    QUEUE_CONNECTION=sync
-
-USER www-data
-
-CMD ["frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile"]
+ENTRYPOINT ["/var/www/html/docker/entrypoint.sh"]

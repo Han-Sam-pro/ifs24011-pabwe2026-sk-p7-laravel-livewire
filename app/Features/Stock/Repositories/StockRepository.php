@@ -16,8 +16,8 @@ class StockRepository implements StockRepositoryInterface
             ->when($status, fn ($query) => $query->where('status', $status))
             ->when($search, function ($query, $search) {
                 $query->where(function ($query) use ($search) {
-                    $query->where('name', 'like', "%{$search}%")
-                        ->orWhere('sku', 'like', "%{$search}%");
+                    $query->whereLike('name', "%{$search}%")
+                        ->orWhereLike('sku', "%{$search}%");
                 });
             })
             ->latest('id')

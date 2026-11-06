@@ -2,6 +2,8 @@
 
 Aplikasi manajemen persediaan barang dengan arsitektur **Feature-First / Clean Architecture**, dibangun dengan **Laravel 13**, **Livewire 4**, **Tailwind CSS (CDN)**, dan **MySQL**. Mendukung autentikasi username/email, role admin/member, CRUD stok, penyesuaian jumlah, gambar sampul, deskripsi Markdown, impor/ekspor Excel, serta pembuatan data stok dengan AI.
 
+> Semua komponen berjalan **lokal**: database MySQL, penyimpanan gambar di `storage/app/public`, dan AI opsional melalui Ollama. Tidak ada layanan cloud yang diperlukan.
+
 ---
 
 ## Fitur Utama
@@ -124,6 +126,8 @@ Model `gemma4:e4b` (6,1 GB) pada pengujian membutuhkan sekitar 25 detik untuk sa
 
 ## Instalasi
 
+> ZIP proyek tidak menyertakan folder `vendor/` agar ukurannya kecil. Jalankan `composer install` lebih dulu.
+
 ```bash
 composer install
 cp .env.example .env
@@ -165,7 +169,7 @@ Tests: 131 passed (483 assertions)
 Total: 100.0 % (26/26 classes)
 ```
 
-Laporan lengkap tersedia di `coverage.txt` dan `coverage-html/index.html`.
+Laporan coverage dibuat ulang otomatis setiap perintah di atas dijalankan (`coverage.txt` dan `coverage-html/`).
 
 ---
 
