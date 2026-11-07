@@ -98,37 +98,6 @@ pipeline {
         }
 
         // ============================================================
-        // INSTALL FRONTEND DEPENDENCIES + BUILD ASSETS
-        // ============================================================
-        stage('Install & Build Frontend') {
-            agent {
-                docker {
-                    image 'node:24-alpine'
-                    reuseNode true
-                }
-            }
-
-            steps {
-                sh '''
-                    set -e
-
-                    echo "=== Installing Frontend Dependencies ==="
-                    # package-lock.json may not exist yet; prefer reproducible install when available
-                    if [ -f package-lock.json ]; then
-                        npm ci --ignore-scripts
-                    else
-                        npm install --ignore-scripts
-                    fi
-
-                    echo "=== Building Vite Assets ==="
-                    npm run build
-
-                    echo "=== Frontend Build Completed ==="
-                '''
-            }
-        }
-
-        // ============================================================
         // TEST (PHPUnit + Coverage)
         // ============================================================
         stage('Test') {
