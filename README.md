@@ -139,6 +139,8 @@ php artisan storage:link
 php artisan serve
 ```
 
+> Di Windows, `public/storage` dibuat sebagai junction. Router `server.php` di root proyek diperlukan agar `php artisan serve` tetap dapat menyajikan gambar sampul melalui route `storage.public`; jangan hapus file tersebut.
+
 Buka `http://localhost:8000`.
 
 **Akun bawaan seeder:**
