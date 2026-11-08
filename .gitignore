@@ -40,3 +40,6 @@ Homestead.yaml
 Thumbs.db
 npm-debug.log
 yarn-error.log
+
+# Environment produksi untuk docker run --env-file
+.env.docker
