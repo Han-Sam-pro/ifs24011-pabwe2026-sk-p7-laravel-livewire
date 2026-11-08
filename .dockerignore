@@ -1,0 +1,33 @@
+# Jangan ikutkan rahasia, cache lokal, dan artefak pengembangan ke dalam image.
+.git
+.gitignore
+.gitattributes
+.env
+.env.*
+!.env.example
+.phpunit.result.cache
+.editorconfig
+Jenkinsfile
+coverage.txt
+coverage-html
+node_modules
+tests
+phpunit.xml
+vendor
+
+# Cache & file runtime dari mesin pengembang (akan dibuat ulang di dalam container).
+bootstrap/cache/*.php
+storage/logs/*
+storage/framework/cache/data
+storage/framework/cache/locks
+storage/framework/sessions/*
+storage/framework/views/*
+storage/app/*
+public/storage
+database/database.sqlite
+*.log
+
+# Sampah sistem & editor
+.DS_Store
+Thumbs.db
+*.swp
