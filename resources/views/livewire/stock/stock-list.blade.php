@@ -3,7 +3,7 @@
         <div>
             <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">Inventaris</p>
             <h1 class="mt-1 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Stok Barang</h1>
-            <p class="mt-1 text-sm text-slate-500">Kelola persediaan, pantau status, dan sesuaikan jumlah stok Anda.</p>
+            <p class="mt-1 text-sm text-slate-600">Kelola persediaan, pantau status, dan sesuaikan jumlah stok Anda.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
             <button wire:click="exportExcel" wire:loading.attr="disabled" class="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 disabled:opacity-50">
@@ -31,7 +31,7 @@
 
     <div class="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Total Barang</p>
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-600">Total Barang</p>
             <p class="mt-1 text-2xl font-extrabold text-slate-900">{{ number_format($counts['total']) }}</p>
         </div>
         <div class="rounded-xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
@@ -47,7 +47,7 @@
     <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <div class="flex flex-col gap-3 border-b border-slate-100 p-4 sm:flex-row sm:items-center sm:justify-between">
             <div class="relative w-full sm:max-w-xs">
-                <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+                <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                 <input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari nama atau SKU..." class="w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
             </div>
             <select wire:model.live="statusFilter" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none sm:w-48">
@@ -60,16 +60,16 @@
 
         @if ($stocks->isEmpty())
             <div class="px-6 py-16 text-center">
-                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-slate-100 text-slate-600">
                     <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                 </div>
                 <h3 class="mt-3 text-sm font-semibold text-slate-900">Belum ada stok</h3>
-                <p class="mt-1 text-sm text-slate-500">Tambahkan barang pertama Anda atau impor dari file Excel.</p>
+                <p class="mt-1 text-sm text-slate-600">Tambahkan barang pertama Anda atau impor dari file Excel.</p>
             </div>
         @else
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-slate-100 text-sm">
-                    <thead class="bg-slate-50/70 text-left text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                    <thead class="bg-slate-50/70 text-left text-[11px] font-bold uppercase tracking-wider text-slate-600">
                         <tr>
                             <th class="px-4 py-3">Barang</th>
                             <th class="px-4 py-3">SKU</th>
@@ -87,24 +87,24 @@
                                         @if ($stock->coverImageUrl())
                                             <img src="{{ $stock->coverImageUrl() }}" alt="{{ $stock->name }}" class="h-11 w-11 rounded-lg object-cover ring-1 ring-slate-200">
                                         @else
-                                            <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-slate-400">
+                                            <div class="flex h-11 w-11 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
                                                 <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                                             </div>
                                         @endif
                                         <div class="min-w-0">
                                             <a href="{{ route('stocks.show', $stock) }}" class="block truncate font-semibold text-slate-900 hover:text-blue-600">{{ $stock->name }}</a>
-                                            <p class="text-xs text-slate-500">Min. {{ $stock->min_stock }} {{ $stock->unit }}</p>
+                                            <p class="text-xs text-slate-600">Min. {{ $stock->min_stock }} {{ $stock->unit }}</p>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-500">{{ $stock->sku ?: '—' }}</td>
+                                <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-slate-600">{{ $stock->sku ?: '—' }}</td>
                                 <td class="whitespace-nowrap px-4 py-3">
                                     <div class="flex items-center justify-center gap-2">
                                         <button wire:click="adjustQuantity({{ $stock->id }}, -1)" title="Kurangi stok" class="flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:border-rose-400 hover:text-rose-600">−</button>
                                         <span class="min-w-10 text-center font-bold text-slate-900">{{ number_format($stock->quantity) }}</span>
                                         <button wire:click="adjustQuantity({{ $stock->id }}, 1)" title="Tambah stok" class="flex h-7 w-7 items-center justify-center rounded-md border border-slate-300 text-slate-600 hover:border-emerald-400 hover:text-emerald-600">+</button>
                                     </div>
-                                    <p class="mt-1 text-center text-[11px] text-slate-400">{{ $stock->unit }}</p>
+                                    <p class="mt-1 text-center text-[11px] text-slate-600">{{ $stock->unit }}</p>
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-3 text-slate-700">{{ $stock->price !== null ? $stock->formattedPrice() : '—' }}</td>
                                 <td class="whitespace-nowrap px-4 py-3">
@@ -136,7 +136,7 @@
             <div class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <h2 class="text-lg font-bold text-slate-900">{{ $editingId ? 'Edit Stok' : 'Tambah Stok Baru' }}</h2>
-                    <button wire:click="closeFormModal" class="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600">
+                    <button wire:click="closeFormModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-600">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -171,7 +171,7 @@
                         <div>
                             <label class="mb-1 block text-xs font-semibold text-slate-600">Minimal Stok <span class="text-rose-500">*</span></label>
                             <input wire:model="minStock" type="number" min="0" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                            <p class="mt-1 text-[11px] text-slate-400">Status "Stok Menipis" muncul saat jumlah ≤ minimal stok.</p>
+                            <p class="mt-1 text-[11px] text-slate-600">Status "Stok Menipis" muncul saat jumlah ≤ minimal stok.</p>
                             @error('minStock') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                     </div>
@@ -180,9 +180,9 @@
                         <label class="mb-1 block text-xs font-semibold text-slate-600">Deskripsi (Markdown)</label>
                         <div x-data="{ tab: 'write' }" class="overflow-hidden rounded-lg border border-slate-300">
                             <div class="flex items-center gap-1 border-b border-slate-200 bg-slate-50 px-2 py-1.5">
-                                <button type="button" @click="tab = 'write'" :class="tab === 'write' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'" class="rounded px-2.5 py-1 text-xs font-semibold">Tulis</button>
-                                <button type="button" @click="tab = 'preview'; $nextTick(() => window.renderMarkdownPreview('stock-description', 'stock-description-preview'))" :class="tab === 'preview' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'" class="rounded px-2.5 py-1 text-xs font-semibold">Pratinjau</button>
-                                <span class="ml-auto text-[10px] text-slate-400">Markdown didukung</span>
+                                <button type="button" @click="tab = 'write'" :class="tab === 'write' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-600'" class="rounded px-2.5 py-1 text-xs font-semibold">Tulis</button>
+                                <button type="button" @click="tab = 'preview'; $nextTick(() => window.renderMarkdownPreview('stock-description', 'stock-description-preview'))" :class="tab === 'preview' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-600'" class="rounded px-2.5 py-1 text-xs font-semibold">Pratinjau</button>
+                                <span class="ml-auto text-[10px] text-slate-600">Markdown didukung</span>
                             </div>
                             <textarea id="stock-description" wire:model="description" rows="6" x-show="tab === 'write'" placeholder="Tulis deskripsi barang... **tebal**, - daftar, # judul" class="w-full resize-y border-0 px-3 py-2 font-mono text-sm focus:ring-0"></textarea>
                             <div id="stock-description-preview" x-show="tab === 'preview'" x-cloak class="markdown-body min-h-32 px-3 py-2 text-sm"></div>
@@ -209,7 +209,7 @@
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.6 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0Z"/></svg>
                 </div>
                 <h3 class="mt-4 text-center text-lg font-bold text-slate-900">Hapus stok ini?</h3>
-                <p class="mt-1 text-center text-sm text-slate-500">Data dan gambar sampul akan dihapus permanen.</p>
+                <p class="mt-1 text-center text-sm text-slate-600">Data dan gambar sampul akan dihapus permanen.</p>
                 <div class="mt-5 flex gap-2">
                     <button wire:click="cancelDelete" class="flex-1 rounded-lg border border-slate-300 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
                     <button wire:click="deleteStock" class="flex-1 rounded-lg bg-rose-600 py-2 text-sm font-semibold text-white hover:bg-rose-700">Hapus</button>
@@ -224,7 +224,7 @@
             <div class="w-full max-w-lg rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <h2 class="text-lg font-bold text-slate-900">Impor Stok dari Excel</h2>
-                    <button wire:click="closeImportModal" class="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100">
+                    <button wire:click="closeImportModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -262,9 +262,9 @@
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <div>
                         <h2 class="text-lg font-bold text-slate-900">Generate Stok dengan AI</h2>
-                        <p class="text-xs text-slate-500">Deskripsikan kebutuhan inventaris, AI akan mengusulkan item.</p>
+                        <p class="text-xs text-slate-600">Deskripsikan kebutuhan inventaris, AI akan mengusulkan item.</p>
                     </div>
-                    <button wire:click="closeAiModal" class="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100">
+                    <button wire:click="closeAiModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -293,7 +293,7 @@
                     @if ($aiItems !== [])
                         <div class="overflow-hidden rounded-lg border border-slate-200">
                             <table class="min-w-full divide-y divide-slate-100 text-xs">
-                                <thead class="bg-slate-50 text-left font-bold text-slate-500">
+                                <thead class="bg-slate-50 text-left font-bold text-slate-600">
                                     <tr>
                                         <th class="px-3 py-2"></th>
                                         <th class="px-3 py-2">Nama</th>
@@ -308,7 +308,7 @@
                                             <td class="px-3 py-2"><input type="checkbox" wire:model="aiSelected" value="{{ $index }}" class="rounded border-slate-300 text-blue-600"></td>
                                             <td class="px-3 py-2">
                                                 <p class="font-semibold text-slate-800">{{ $item['name'] }}</p>
-                                                @if (! empty($item['sku']))<p class="font-mono text-[10px] text-slate-400">{{ $item['sku'] }}</p>@endif
+                                                @if (! empty($item['sku']))<p class="font-mono text-[10px] text-slate-600">{{ $item['sku'] }}</p>@endif
                                             </td>
                                             <td class="px-3 py-2 text-slate-600">{{ $item['quantity'] }}</td>
                                             <td class="px-3 py-2 text-slate-600">{{ $item['unit'] }}</td>

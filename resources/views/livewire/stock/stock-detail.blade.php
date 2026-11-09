@@ -1,5 +1,5 @@
 <div>
-    <a href="{{ route('stocks.index') }}" class="mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-blue-600">
+    <a href="{{ route('stocks.index') }}" class="mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 hover:text-blue-600">
         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         Kembali ke daftar stok
     </a>
@@ -31,7 +31,7 @@
                     @if ($stock->coverImageUrl())
                         <button wire:click="confirmCoverDeletion" class="w-full rounded-lg border border-rose-200 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50">Hapus Foto Cover</button>
                     @endif
-                    <p class="text-center text-[10px] text-slate-400">JPG, PNG, WEBP maks. 5 MB</p>
+                    <p class="text-center text-[10px] text-slate-600">JPG, PNG, WEBP maks. 5 MB</p>
                 </div>
             </div>
         </div>
@@ -46,11 +46,11 @@
                                 {{ $stock->status->label() }}
                             </span>
                             @if ($stock->sku)
-                                <span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-500">{{ $stock->sku }}</span>
+                                <span class="rounded-md bg-slate-100 px-2 py-1 font-mono text-[11px] text-slate-600">{{ $stock->sku }}</span>
                             @endif
                         </div>
                         <h1 class="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">{{ $stock->name }}</h1>
-                        <p class="mt-1 text-xs text-slate-400">Diperbarui {{ $stock->updated_at->diffForHumans() }}</p>
+                        <p class="mt-1 text-xs text-slate-600">Diperbarui {{ $stock->updated_at->diffForHumans() }}</p>
                     </div>
                     <div class="flex gap-2">
                         <button wire:click="openEditModal" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">Edit</button>
@@ -60,19 +60,19 @@
 
                 <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
                     <div class="rounded-xl bg-slate-50 p-3">
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Harga</p>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-600">Harga</p>
                         <p class="mt-1 text-sm font-bold text-slate-900">{{ $stock->price !== null ? $stock->formattedPrice() : '—' }}</p>
                     </div>
                     <div class="rounded-xl bg-slate-50 p-3">
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Min. Stok</p>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-600">Min. Stok</p>
                         <p class="mt-1 text-sm font-bold text-slate-900">{{ number_format($stock->min_stock) }} {{ $stock->unit }}</p>
                     </div>
                     <div class="rounded-xl bg-slate-50 p-3">
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Satuan</p>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-600">Satuan</p>
                         <p class="mt-1 text-sm font-bold text-slate-900">{{ $stock->unit }}</p>
                     </div>
                     <div class="rounded-xl bg-slate-50 p-3">
-                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-400">Status</p>
+                        <p class="text-[10px] font-bold uppercase tracking-wide text-slate-600">Status</p>
                         <p class="mt-1 text-sm font-bold text-slate-900">{{ $stock->status->label() }}</p>
                     </div>
                 </div>
@@ -90,13 +90,13 @@
             </div>
 
             <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h2 class="text-sm font-bold uppercase tracking-wide text-slate-400">Deskripsi</h2>
+                <h2 class="text-sm font-bold uppercase tracking-wide text-slate-600">Deskripsi</h2>
                 @if ($stock->description)
                     <div class="markdown-body mt-3 text-sm text-slate-700">
                         {!! \Illuminate\Support\Str::markdown($stock->description, ['html_input' => 'strip', 'allow_unsafe_links' => false]) !!}
                     </div>
                 @else
-                    <p class="mt-3 text-sm italic text-slate-400">Belum ada deskripsi untuk barang ini.</p>
+                    <p class="mt-3 text-sm italic text-slate-600">Belum ada deskripsi untuk barang ini.</p>
                 @endif
             </div>
         </div>
@@ -108,7 +108,7 @@
             <div class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <h2 class="text-lg font-bold text-slate-900">Edit Stok</h2>
-                    <button wire:click="closeEditModal" class="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100">
+                    <button wire:click="closeEditModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -151,8 +151,8 @@
                         <label class="mb-1 block text-xs font-semibold text-slate-600">Deskripsi (Markdown)</label>
                         <div x-data="{ tab: 'write' }" class="overflow-hidden rounded-lg border border-slate-300">
                             <div class="flex items-center gap-1 border-b border-slate-200 bg-slate-50 px-2 py-1.5">
-                                <button type="button" @click="tab = 'write'" :class="tab === 'write' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'" class="rounded px-2.5 py-1 text-xs font-semibold">Tulis</button>
-                                <button type="button" @click="tab = 'preview'; $nextTick(() => window.renderMarkdownPreview('detail-description', 'detail-description-preview'))" :class="tab === 'preview' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500'" class="rounded px-2.5 py-1 text-xs font-semibold">Pratinjau</button>
+                                <button type="button" @click="tab = 'write'" :class="tab === 'write' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-600'" class="rounded px-2.5 py-1 text-xs font-semibold">Tulis</button>
+                                <button type="button" @click="tab = 'preview'; $nextTick(() => window.renderMarkdownPreview('detail-description', 'detail-description-preview'))" :class="tab === 'preview' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-600'" class="rounded px-2.5 py-1 text-xs font-semibold">Pratinjau</button>
                             </div>
                             <textarea id="detail-description" wire:model="description" rows="6" x-show="tab === 'write'" class="w-full resize-y border-0 px-3 py-2 font-mono text-sm focus:ring-0"></textarea>
                             <div id="detail-description-preview" x-show="tab === 'preview'" x-cloak class="markdown-body min-h-32 px-3 py-2 text-sm"></div>
@@ -174,7 +174,7 @@
         <div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
             <div class="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
                 <h3 class="text-lg font-bold text-slate-900">Hapus "{{ $stock->name }}"?</h3>
-                <p class="mt-1 text-sm text-slate-500">Stok dan foto cover akan dihapus permanen.</p>
+                <p class="mt-1 text-sm text-slate-600">Stok dan foto cover akan dihapus permanen.</p>
                 <div class="mt-5 flex gap-2">
                     <button wire:click="cancelDeletion" class="flex-1 rounded-lg border border-slate-300 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
                     <button wire:click="deleteStock" class="flex-1 rounded-lg bg-rose-600 py-2 text-sm font-semibold text-white hover:bg-rose-700">Hapus</button>
@@ -188,7 +188,7 @@
         <div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
             <div class="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
                 <h3 class="text-lg font-bold text-slate-900">Hapus foto cover?</h3>
-                <p class="mt-1 text-sm text-slate-500">Foto akan dihapus dari penyimpanan.</p>
+                <p class="mt-1 text-sm text-slate-600">Foto akan dihapus dari penyimpanan.</p>
                 <div class="mt-5 flex gap-2">
                     <button wire:click="cancelCoverDeletion" class="flex-1 rounded-lg border border-slate-300 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
                     <button wire:click="deleteCoverPhoto" class="flex-1 rounded-lg bg-rose-600 py-2 text-sm font-semibold text-white hover:bg-rose-700">Hapus Foto</button>

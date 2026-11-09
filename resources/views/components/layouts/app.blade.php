@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi manajemen inventaris stok barang untuk pengguna dan admin.">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Inventaris Stok' }}</title>
     @vite('resources/css/app.css')
@@ -40,7 +41,7 @@
                     </span>
                     <span>
                         <span class="block text-sm font-bold tracking-wide text-white">INVENTARIS</span>
-                        <span class="block text-[11px] uppercase tracking-widest text-slate-500">Stok Barang</span>
+                        <span class="block text-[11px] uppercase tracking-widest text-slate-400">Stok Barang</span>
                     </span>
                 </a>
 
@@ -106,7 +107,7 @@
                     {{ $slot }}
                 </main>
 
-                <footer class="border-t border-slate-200 px-6 py-4 text-center text-xs text-slate-400">
+                <footer class="border-t border-slate-200 px-6 py-4 text-center text-xs text-slate-600">
                     Inventaris Stok &middot; PABWE 2026 P7 &middot; Laravel {{ app()->version() }} &amp; Livewire
                 </footer>
             </div>
@@ -132,7 +133,7 @@
                 {{ $slot }}
             </main>
 
-            <footer class="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-400">
+            <footer class="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-600">
                 Inventaris Stok &middot; PABWE 2026 P7
             </footer>
         </div>
