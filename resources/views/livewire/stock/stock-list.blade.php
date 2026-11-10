@@ -50,7 +50,7 @@
                 <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                 <input wire:model.live.debounce.300ms="search" type="search" placeholder="Cari nama atau SKU..." class="w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
             </div>
-            <select wire:model.live="statusFilter" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none sm:w-48">
+            <select wire:model.live="statusFilter" aria-label="Filter status" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none sm:w-48">
                 <option value="">Semua Status</option>
                 @foreach ($statuses as $status)
                     <option value="{{ $status->value }}">{{ $status->label() }}</option>
@@ -63,7 +63,7 @@
                 <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-slate-100 text-slate-600">
                     <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7 12 3 4 7m16 0-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                 </div>
-                <h3 class="mt-3 text-sm font-semibold text-slate-900">Belum ada stok</h3>
+                <h2 class="mt-3 text-sm font-semibold text-slate-900">Belum ada stok</h2>
                 <p class="mt-1 text-sm text-slate-600">Tambahkan barang pertama Anda atau impor dari file Excel.</p>
             </div>
         @else

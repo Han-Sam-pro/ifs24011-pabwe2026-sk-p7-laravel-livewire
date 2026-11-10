@@ -24,7 +24,7 @@
                 <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.3-4.3M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
                 <input wire:model.live.debounce.300ms="search" type="search" aria-label="Cari" placeholder="Cari nama atau SKU..." class="w-full rounded-lg border border-slate-300 py-2 pl-9 pr-3 text-sm focus:border-blue-500 focus:outline-none">
             </div>
-            <select wire:model.live="statusFilter" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm sm:w-48">
+            <select wire:model.live="statusFilter" aria-label="Filter status" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm sm:w-48">
                 <option value="">Semua Status</option>
                 @foreach ($statuses as $status)
                     <option value="{{ $status->value }}">{{ $status->label() }}</option>

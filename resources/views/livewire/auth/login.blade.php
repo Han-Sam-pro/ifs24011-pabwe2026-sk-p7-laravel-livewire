@@ -1,7 +1,7 @@
 <div class="max-w-md mx-auto my-8">
     <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
         <div class="text-center mb-6">
-            <h2 class="text-2xl font-bold text-slate-900">Masuk ke Akun Anda</h2>
+            <h1 class="text-2xl font-bold text-slate-900">Masuk ke Akun Anda</h1>
             <p class="text-sm text-slate-600 mt-1">Masuk untuk mengelola persediaan barang Anda</p>
         </div>
 
