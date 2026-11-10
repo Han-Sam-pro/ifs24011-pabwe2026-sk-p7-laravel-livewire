@@ -108,7 +108,7 @@
             <div class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <h2 class="text-lg font-bold text-slate-900">Edit Stok</h2>
-                    <button wire:click="closeEditModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
+                    <button type="button" aria-label="Tutup" wire:click="closeEditModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>

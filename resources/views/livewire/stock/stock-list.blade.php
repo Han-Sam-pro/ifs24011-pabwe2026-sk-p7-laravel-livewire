@@ -136,7 +136,7 @@
             <div class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <h2 class="text-lg font-bold text-slate-900">{{ $editingId ? 'Edit Stok' : 'Tambah Stok Baru' }}</h2>
-                    <button wire:click="closeFormModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-600">
+                    <button type="button" aria-label="Tutup" wire:click="closeFormModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-600">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -224,7 +224,7 @@
             <div class="w-full max-w-lg rounded-2xl bg-white shadow-2xl">
                 <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                     <h2 class="text-lg font-bold text-slate-900">Impor Stok dari Excel</h2>
-                    <button wire:click="closeImportModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
+                    <button type="button" aria-label="Tutup" wire:click="closeImportModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -245,7 +245,7 @@
                     @endif
                 </div>
                 <div class="flex justify-end gap-2 border-t border-slate-100 px-6 py-4">
-                    <button wire:click="closeImportModal" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
+                    <button type="button" wire:click="closeImportModal" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
                     <button wire:click="importExcel" wire:loading.attr="disabled" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50">
                         <span wire:loading.remove wire:target="importExcel">Impor Sekarang</span>
                         <span wire:loading wire:target="importExcel">Mengimpor...</span>
@@ -264,7 +264,7 @@
                         <h2 class="text-lg font-bold text-slate-900">Generate Stok dengan AI</h2>
                         <p class="text-xs text-slate-600">Deskripsikan kebutuhan inventaris, AI akan mengusulkan item.</p>
                     </div>
-                    <button wire:click="closeAiModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
+                    <button type="button" aria-label="Tutup" wire:click="closeAiModal" class="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
@@ -322,7 +322,7 @@
                     @endif
                 </div>
                 <div class="flex justify-end gap-2 border-t border-slate-100 px-6 py-4">
-                    <button wire:click="closeAiModal" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
+                    <button type="button" wire:click="closeAiModal" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">Batal</button>
                     <button wire:click="saveAiGenerated" @disabled($aiItems === []) class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40">Simpan Item Terpilih</button>
                 </div>
             </div>
