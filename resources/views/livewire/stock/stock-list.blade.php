@@ -144,40 +144,40 @@
                 <form wire:submit="saveStock" class="space-y-4 px-6 py-5">
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">Nama Barang <span class="text-rose-500">*</span></label>
-                            <input wire:model="name" type="text" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f11964">Nama Barang <span class="text-rose-500">*</span></label>
+                            <input wire:model="name" type="text" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" id="stock-list-blade-f11964">
                             @error('name') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                         <div>
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">SKU</label>
-                            <input wire:model="sku" type="text" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f12503">SKU</label>
+                            <input wire:model="sku" type="text" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" id="stock-list-blade-f12503">
                             @error('sku') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                         <div>
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">Jumlah <span class="text-rose-500">*</span></label>
-                            <input wire:model="quantity" type="number" min="0" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f13045">Jumlah <span class="text-rose-500">*</span></label>
+                            <input wire:model="quantity" type="number" min="0" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" id="stock-list-blade-f13045">
                             @error('quantity') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                         <div>
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">Satuan <span class="text-rose-500">*</span></label>
-                            <input wire:model="unit" type="text" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f13597">Satuan <span class="text-rose-500">*</span></label>
+                            <input wire:model="unit" type="text" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" id="stock-list-blade-f13597">
                             @error('unit') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                         <div>
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">Harga (Rp)</label>
-                            <input wire:model="price" type="number" min="0" step="0.01" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f14072">Harga (Rp)</label>
+                            <input wire:model="price" type="number" min="0" step="0.01" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" id="stock-list-blade-f14072">
                             @error('price') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                         <div>
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">Minimal Stok <span class="text-rose-500">*</span></label>
-                            <input wire:model="minStock" type="number" min="0" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f14706">Minimal Stok <span class="text-rose-500">*</span></label>
+                            <input wire:model="minStock" type="number" min="0" required class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" id="stock-list-blade-f14706">
                             <p class="mt-1 text-[11px] text-slate-600">Status "Stok Menipis" muncul saat jumlah ≤ minimal stok.</p>
                             @error('minStock') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                         </div>
                     </div>
 
                     <div>
-                        <label class="mb-1 block text-xs font-semibold text-slate-600">Deskripsi (Markdown)</label>
+                        <label for="stock-description" class="mb-1 block text-xs font-semibold text-slate-600">Deskripsi (Markdown)</label>
                         <div x-data="{ tab: 'write' }" class="overflow-hidden rounded-lg border border-slate-300">
                             <div class="flex items-center gap-1 border-b border-slate-200 bg-slate-50 px-2 py-1.5">
                                 <button type="button" @click="tab = 'write'" :class="tab === 'write' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-600'" class="rounded px-2.5 py-1 text-xs font-semibold">Tulis</button>
@@ -270,14 +270,14 @@
                 </div>
                 <div class="space-y-4 px-6 py-5">
                     <div>
-                        <label class="mb-1 block text-xs font-semibold text-slate-600">Kebutuhan stok</label>
-                        <textarea wire:model="aiPrompt" rows="3" placeholder="Contoh: perlengkapan alat tulis kantor untuk 10 karyawan" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"></textarea>
+                        <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f22664">Kebutuhan stok</label>
+                        <textarea wire:model="aiPrompt" rows="3" placeholder="Contoh: perlengkapan alat tulis kantor untuk 10 karyawan" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none" id="stock-list-blade-f22664"></textarea>
                         @error('aiPrompt') <p class="mt-1 text-xs text-rose-600">{{ $message }}</p> @enderror
                     </div>
                     <div class="flex items-end gap-3">
                         <div class="w-32">
-                            <label class="mb-1 block text-xs font-semibold text-slate-600">Jumlah item</label>
-                            <input wire:model="aiCount" type="number" min="1" max="10" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+                            <label class="mb-1 block text-xs font-semibold text-slate-600" for="stock-list-blade-f23270">Jumlah item</label>
+                            <input wire:model="aiCount" type="number" min="1" max="10" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" id="stock-list-blade-f23270">
                         </div>
                         <button wire:click="generateWithAi" wire:loading.attr="disabled" class="rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-700 disabled:opacity-50">
                             <span wire:loading.remove wire:target="generateWithAi">Generate</span>
